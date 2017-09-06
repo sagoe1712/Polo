@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="apple-touch-startup-image-640x1096.png">
+<title>Polo</title>
+<link rel="stylesheet" href="css/framework7.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/colors/magenta.css">
+<link type="text/css" rel="stylesheet" href="css/swipebox.css" />
+<link type="text/css" rel="stylesheet" href="css/animations.css" />
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body id="mobile_wrap">
+<div class="pages polo-login-page">
+ <div class="popup-login">
+    <div class="content-block-login">
+     <br/><br/>
+      <div class="form_logo"><img src="images/polo-logo.png" alt="" title="" /></div>
+            <div class="loginform">
+            <form id="LoginForm" method="post">
+            <input type="text" name="Username" value="" class="form_input required txtusername" placeholder="username" />
+            <input type="password" name="Password" value="" class="form_input required pwdpass" placeholder="password" />
+            <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div>
+            <input type="submit" name="submit" class="form_submit" id="submit" value="SIGN IN" />
+            </form>
+           
+            </div>
+    </div>
+    </div>
+    </div>
+</body>
+ <!-- Login Popup -->
+    <div class="popup popup-forgot resend-pass-page">
+    <div class="content-block-login">
+      <div class="form_logo"><img src="images/polo-logo.png" alt="" title="" /></div>
+            <div class="loginform">
+            <form id="LoginForm" method="post">
+            <h4>Forgot Password?</h4>
+            <p>Enter your email to help us identify you</p>
+            <input type="text" name="Email" value="" class="form_input required" placeholder="email" />
+            <input type="submit" name="submit" class="form_submit" id="submit" value="SEND" />
+            </form>
+           
+            </div>
+      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+    </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/framework7.js"></script>
+<script type="text/javascript" src="js/my-app.js"></script>
+<script type="text/javascript" src="js/jquery.swipebox.js"></script>
+<script type="text/javascript" src="js/email.js"></script>
+</html>
