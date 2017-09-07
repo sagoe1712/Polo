@@ -63,9 +63,9 @@ $$(document).on('pageInit', function (e) {
 
         }, function (error) { 
             console.log("Scanning failed: ", error); 
-			
-			return false;
-		});
+		}
+		return false;
+		);
 		
 		
 		$('a.backbutton').click(function(){
