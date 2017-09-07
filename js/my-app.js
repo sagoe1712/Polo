@@ -63,6 +63,8 @@ $$(document).on('pageInit', function (e) {
 
         }, function (error) { 
             console.log("Scanning failed: ", error); 
+			
+			return false;
 		});
 		
 		
