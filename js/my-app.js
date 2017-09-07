@@ -167,8 +167,3 @@ $$(document).on('pageInit', function (e) {
 		
 		
 })
-
-
-$$('#scan-page').on('pageInit', function (e) {
-	aapp.initialize();
-	});
