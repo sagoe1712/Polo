@@ -30,11 +30,7 @@ $$(document).on('pageInit', function (e) {
 
   		$(".swipebox").swipebox();
 		
-		$('.btn-scanpage').click(function(){
-	alert("load works");
-	var yinka = "http://10.248.25.125/barcode/barcode.html";
-	window.location.replace('http://10.248.25.125/barcode/scan-receipt.html');
-});
+	   app.initialize();
 		
 		$("#ContactForm").validate({
 		submitHandler: function(form) {
