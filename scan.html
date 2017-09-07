@@ -1,6 +1,6 @@
 
 
-<div class="pages app">
+<div class="pages">
   <div data-page="projects" class="page no-toolbar no-navbar">
     <div class="page-content">
     
@@ -37,5 +37,7 @@
         <script type="text/javascript" src="barcodescanner.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
+		$(document).on('pageInit', function (e) {
             app.initialize();
+		});
         </script>
