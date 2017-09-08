@@ -40,6 +40,7 @@ $$(document).on('pageInit', function (e) {
 		});
 		
 		$('#btn-scan').click(function(){
+			alert("Scan button was hit");
 			 var scanner = cordova.plugins.barcodeScanner;
 
         scanner.scan( function (result) { 
