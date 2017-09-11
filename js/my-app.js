@@ -32,15 +32,8 @@ $$(document).on('pageInit', function (e) {
 		
 	   app.initialize();
 		
-		$("#ContactForm").validate({
-		submitHandler: function(form) {
-		ajaxContact(form);
-		return false;
-		}
-		});
-		
-		$('#scan').click(function(){
-			alert("Scan button was hit");
+		$('.app').on('click', '#scan', function () {
+					alert("Scan button was hit");
 			 var scanner = cordova.plugins.barcodeScanner;
 
         scanner.scan( function (result) { 
@@ -65,6 +58,15 @@ $$(document).on('pageInit', function (e) {
         });
 		return false;
 		});
+		
+		$("#ContactForm").validate({
+		submitHandler: function(form) {
+		ajaxContact(form);
+		return false;
+		}
+		});
+		
+
 		
 		
 		$('a.backbutton').click(function(){
