@@ -77,7 +77,7 @@
      <br/>
      <a href="profile.html"><button class="btn-edit-profile">Edit Profile</button></a>
      
-      <a href="#" id="scan"><h3 class="grey-text">Scan a receipt</h3></a>
+      <a href="#" id="scan"><button class="btn-edit-profile">Scan a receipt</button></a>
        <p id="info"></p>
        
       <br/><br/>
@@ -121,6 +121,33 @@
        
         <script type="text/javascript">
             app.initialize();
+			
+					$('#scan').click(function(){
+			alert("Scan button was hit");
+			 var scanner = cordova.plugins.barcodeScanner;
+
+        scanner.scan( function (result) { 
+
+            alert("We got a barcode\n" + 
+            "Result: " + result.text + "\n" + 
+            "Format: " + result.format + "\n" + 
+            "Cancelled: " + result.cancelled);  
+
+           console.log("Scanner result: \n" +
+                "text: " + result.text + "\n" +
+                "format: " + result.format + "\n" +
+                "cancelled: " + result.cancelled + "\n");
+            document.getElementById("info").innerHTML = result.text;
+            console.log(result);
+            /*
+            if (args.format == "QR_CODE") {
+                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
+            }
+            */
+
+        });
+		return false;
+		});
         </script>
   </body>
 </html>
