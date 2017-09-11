@@ -32,7 +32,7 @@ $$(document).on('pageInit', function (e) {
 		
 	   app.initialize();
 		
-		$('.app').on('click', '#scan', function () {
+		$('#scanpage').on('click', '#scan', function () {
 					alert("Scan button was hit");
 			 var scanner = cordova.plugins.barcodeScanner;
 
