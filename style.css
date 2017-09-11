@@ -1565,7 +1565,7 @@ padding:0px 15px;
 	z-index: 2;
 }
 
-.btn-scan, .btn-save, .btn-add-to-cart{
+.btn-save, .btn-add-to-cart{
 	font-size:12px !important;
 	width:70%;
 
@@ -1585,9 +1585,16 @@ padding:0px 15px;
 
 .btn-scan{
 		z-index: 1;
-		position: absolute;
-	top: 0px;
-	left:35px;
+	padding:10px 0;
+margin:15px 0 0 0;
+font-weight:normal;
+text-align:center;
+cursor:pointer;
+font-size:18px;
+color:#FFFFFF;
+-webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px;
+border: none;
+background-color:#CFA35C !important;
 }
 
 .btn-add-to-cart .btn-icon{
