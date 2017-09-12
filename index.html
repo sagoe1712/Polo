@@ -13,112 +13,55 @@
 <link rel="stylesheet" href="css/colors/magenta.css">
 <link type="text/css" rel="stylesheet" href="css/swipebox.css" />
 <link type="text/css" rel="stylesheet" href="css/animations.css" />
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
 </head>
-<body class="app" id="mobile_wrap">
-
-          
-    <div class="statusbar-overlay"></div>
-
-    <div class="panel-overlay"></div>
-
-    <div class="panel panel-left panel-cover">
-          <div class="user_login_info">
-                <div class="user_thumb">
-                <img src="images/polo-logo.png" alt="" title="" class="panel-logo" />
-                </div>    
-               <nav class="user-nav">
-                    <ul>
-                      <li><a href="index.html" class="close-panel"><img src="images/icons/panel/home.png" alt="" title="" /><span>Home</span></a></li>
-                      <li><a href="profile.html" class="close-panel"><img src="images/icons/panel/profile.png" alt="" title="" /><span>My Profile</span></a></li>
-                      <li><a href="scan.html" class="close-panel"><img src="images/icons/panel/scan.png" alt="" title="" /><span>Scan Receipt</span></a></li>
-                      <li><a href="catalogue.html" class="close-panel"><img src="images/icons/panel/catalogue.png" alt="" title="" /><span>Catalogue</span></a></li>
-                        <li><a href="notification.html" class="close-panel"><img src="images/icons/panel/notification.png" alt="" title="" /><span>Notification</span></a></li>
-                          <li><a href="transfer.html" class="close-panel"><img src="images/icons/panel/transfer.png" alt="" title="" /><span>Transfer Points</span></a></li>
-                            <li><a href="auction.html" class="close-panel"><img src="images/icons/panel/auction.png" alt="" title="" /><span>Bid For Auction</span></a></li>
-                              <li><a href="survey.html" class="close-panel"><img src="images/icons/panel/survey.png" alt="" title="" /><span>Take A Survey</span></a></li>
-                                <li><a href="statement.html" class="close-panel"><img src="images/icons/panel/statement.png" alt="" title="" /><span>My Statement</span></a></li>
-                                  <li><a href="features.html" class="close-panel"><img src="images/icons/panel/pin.png" alt="" title="" /><span>Manage Pin</span></a></li>
-                      <li><a href="index.html" class="close-panel"><img src="images/icons/panel/sign-out.png" alt="" title="" /><span>Sign Out</span></a></li>
-                    </ul>
-                  </nav>
-          </div>
-    </div>
-
-
-    <div class="views">
-
-      <div class="view view-main">
-
-        <div class="pages  toolbar-through">
-
-          <div data-page="index" class="page homepage">
-          
-            <div class="page-content">
-             <div class="navbarpages">
-     <div class="nav_left_button"><a href="#" data-panel="left" class="open-panel"><img src="images/icons/common/menu.png" alt="" title="" /></a></div>
-      <!-- <div class="nav_left_logo"><a href="index.html"><img src="images/logo.png" alt="" title="" /></a></div>-->
-       <p></p>
-     </div>	
-				
-     <div id="pages_maincontent">
-     <div>
-      <div class="div-home-body">
-     <div class="circle">
-     <strong><b>AB</b></strong>
-     </div>
-     <br/>
-    
-     <strong><b class="person-name">Abdulqudus Bello</b></strong>
-     <br/>
-     Membership ID: 2834583
-     <br/>
-     Current Bal: 78342.00
-     <br/>
-     <a href="profile.html"><button class="btn-edit-profile">Edit Profile</button></a>
-     
-       
-      <br/><br/>
-     <div class="div-person-info">
-     <p><img src="images/home/point.png" class="point-img"/> POINTS</p>
-     <p>Membership ID: <b>11210</b></p>
-     <p>Total Current Bal: <b>410850.00</b></p>
-     <p>Blocked Points: <b>0</b></p>
-     <p>Submited Auction Bid: <b>480</b></p>
-     <p>Available Current Bal: <b>410370</b></p>
-     <p>Total Purchase: <b>9043395</b></p>
-     <p>Total Points Received: <b>0</b></p>
-     <p>Total Points Transferred: <b>0</b></p>
-     <p>Total Points Expired: <b>0</b></p>
-     </div>
-     </div>
-     
-     </div>
-     
-     </div>
-     
+<body id="mobile_wrap">
+<div class="pages polo-login-page">
+ <div class="popup-login">
+    <div class="content-block-login">
+     <br/><br/>
+      <div class="form_logo"><img src="images/polo-logo.png" alt="" title="" /></div>
+            <div class="loginform">
+            <form id="LoginForm" method="post">
+            <input type="text" name="Username" value="" class="form_input required txtusername" placeholder="username" />
+            <input type="password" name="Password" value="" class="form_input required pwdpass" placeholder="password" />
+            <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div>
+            <input type="submit" name="submit" class="form_submit btn-login" id="btn-login" value="SIGN IN" />
+            </form>
+           
             </div>
-          </div>
-        </div>
-       
-      </div>
     </div>
-    
-    
-    
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-
+    </div>
+    </div>
+</body>
+ <!-- Login Popup -->
+    <div class="popup popup-forgot resend-pass-page">
+    <div class="content-block-login">
+      <div class="form_logo"><img src="images/polo-logo.png" alt="" title="" /></div>
+            <div class="loginform">
+            <form id="LoginForm" method="post">
+            <h4>Forgot Password?</h4>
+            <p>Enter your email to help us identify you</p>
+            <input type="text" name="Email" value="" class="form_input required" placeholder="email" />
+            <input type="submit" name="submit" class="form_submit" id="submit" value="SEND" />
+            </form>
+           
+            </div>
+      <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
+    </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/framework7.js"></script>
- <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/my-app.js"></script>
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="js/email.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="barcodescanner.js"></script>
-       
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-  </body>
+<script>
+$(document).ready(function(e) {
+    $('#btn-login').click(function(){
+		alert("Login works");
+		window.location.replace('main.html');
+		});
+});
+</script>
 </html>
