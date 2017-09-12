@@ -26,7 +26,7 @@
             <input type="text" name="Username" value="" class="form_input required txtusername" placeholder="username" />
             <input type="password" name="Password" value="" class="form_input required pwdpass" placeholder="password" />
             <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div>
-            <input type="submit" name="submit" class="form_submit btn-login" id="btn-login" value="SIGN IN" />
+            <a href="main.html"><input type="submit" name="submit" class="form_submit btn-login" id="btn-login" value="SIGN IN" /></a>
             </form>
            
             </div>
@@ -39,7 +39,7 @@
     <div class="content-block-login">
       <div class="form_logo"><img src="images/polo-logo.png" alt="" title="" /></div>
             <div class="loginform">
-            <form id="LoginForm" method="post">
+            <form method="post">
             <h4>Forgot Password?</h4>
             <p>Enter your email to help us identify you</p>
             <input type="text" name="Email" value="" class="form_input required" placeholder="email" />
@@ -60,7 +60,7 @@
 $(document).ready(function(e) {
     $('#btn-login').click(function(){
 		alert("Login works");
-		window.location.replace('main.html');
+		window.location.href = "main.html";
 		});
 });
 </script>
