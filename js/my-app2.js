@@ -26,15 +26,15 @@ var mainView = myApp.addView('.view-main', {
 });
 
 
+$$(document).on('pageInit', function (e) {
 
-$(document).on('pageInit', function(e){
-	
-	$(".swipebox").swipebox();
-	
-			
-$('#scanpage').on('click', '#scan', function () {
+  		$(".swipebox").swipebox();
+		
+	   app.initialize();
+		
+		$('#scanpage').on('click', '#scan', function () {
 					alert("Scan button was hit");
-						 var scanner = cordova.plugins.barcodeScanner;
+			 var scanner = cordova.plugins.barcodeScanner;
 
         scanner.scan( function (result) { 
 
@@ -57,11 +57,19 @@ $('#scanpage').on('click', '#scan', function () {
 
         });
 		return false;
-					
-				
-});
-	
-			$('a.backbutton').click(function(){
+		});
+		
+		$("#ContactForm").validate({
+		submitHandler: function(form) {
+		ajaxContact(form);
+		return false;
+		}
+		});
+		
+
+		
+		
+		$('a.backbutton').click(function(){
 			parent.history.back();
 			return false;
 		});
@@ -186,5 +194,6 @@ $('#scanpage').on('click', '#scan', function () {
 		}, false);
 	};
 	
+		
 		
 })
