@@ -1320,7 +1320,7 @@ background-color:transparent;
 color:#b7bec2;
 text-align:center;
 }
-.loginform input.form_submit, .btn-scan, .btn-save, .btn-add-to-cart{
+.loginform input.form_submit, .btn-save, .btn-add-to-cart{
 width:100%;
 padding:10px 0;
 margin:15px 0 0 0;
@@ -1585,7 +1585,7 @@ padding:0px 15px;
 
 .btn-scan{
 		z-index: 1;
-	padding:10px 0;
+	padding:10px 35px;
 margin:15px 0 0 0;
 font-weight:normal;
 text-align:center;
@@ -1595,6 +1595,10 @@ color:#FFFFFF;
 -webkit-border-radius:60px;-moz-border-radius:60px;border-radius:60px;
 border: none;
 background-color:#CFA35C !important;
+}
+
+#info{
+	color:#fff !important;
 }
 
 .btn-add-to-cart .btn-icon{
