@@ -26,40 +26,14 @@ var mainView = myApp.addView('.view-main', {
 });
 
 
+						
 
-$(document).on('pageInit', function(e){
-	
+
+				
+$$(document).on('pageInit', function(e){
 	$(".swipebox").swipebox();
 	
-			
-$('#scanpage').on('click', '#scan', function () {
-					alert("Scan button was hit");
-						 var scanner = cordova.plugins.barcodeScanner;
-
-        scanner.scan( function (result) { 
-
-            alert("We got a barcode\n" + 
-            "Result: " + result.text + "\n" + 
-            "Format: " + result.format + "\n" + 
-            "Cancelled: " + result.cancelled);  
-
-           console.log("Scanner result: \n" +
-                "text: " + result.text + "\n" +
-                "format: " + result.format + "\n" +
-                "cancelled: " + result.cancelled + "\n");
-            document.getElementById("info").innerHTML = result.text;
-            console.log(result);
-            /*
-            if (args.format == "QR_CODE") {
-                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
-            }
-            */
-
-        });
-		return false;
-					
-				
-});
+	
 	
 			$('a.backbutton').click(function(){
 			parent.history.back();
@@ -188,3 +162,51 @@ $('#scanpage').on('click', '#scan', function () {
 	
 		
 })
+
+$$(document).on('pageInit', '.page[data-page="scanpage"]', function (e) {
+  // Following code will be executed for page with data-page attribute equal to "about"
+  myApp.alert('This is Scan page');
+  
+  $('#scan').click(function() {
+					alert("Scan button was hit");
+						 var scanner = cordova.plugins.barcodeScanner;
+
+        scanner.scan( function (result) { 
+
+            alert("We got a barcode\n" + 
+            "Result: " + result.text + "\n" + 
+            "Format: " + result.format + "\n" + 
+            "Cancelled: " + result.cancelled);  
+
+           console.log("Scanner result: \n" +
+                "text: " + result.text + "\n" +
+                "format: " + result.format + "\n" +
+                "cancelled: " + result.cancelled + "\n");
+            document.getElementById("info").innerHTML = result.text;
+            console.log(result);
+            /*
+            if (args.format == "QR_CODE") {
+                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
+            }
+            */
+
+        });
+		return false;
+					
+				
+});
+})
+
+$$(document).on('pageInit', '.page[data-page="statementpage"]', function (e) {
+  // Following code will be executed for page with data-page attribute equal to "about"
+  myApp.alert('This is the statement page');
+})
+
+
+$$(document).on('pageInit', '.page[data-page="auctiondescpage"]', function (e) {
+  // Following code will be executed for page with data-page attribute equal to "about"
+  myApp.alert('This is the auction description page');
+})
+
+
+
