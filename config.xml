@@ -53,6 +53,12 @@
     <gap:splash src="res/screen/ios/Splash-1242x2208.png"     gap:platform="ios"     width="2208" height="1242" />
 
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
+	
+	<plugin name="cordova-plugin-media-capture" source="npm" spec="*">
+  <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
+  <variable name="MICROPHONE_USAGE_DESCRIPTION" value="App would like to access the microphone." />
+  <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
+</plugin>
 
     <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
 </widget>
