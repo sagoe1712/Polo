@@ -58,21 +58,6 @@
   <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
   <variable name="MICROPHONE_USAGE_DESCRIPTION" value="App would like to access the microphone." />
   <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-</plugin>
-
-    <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
-</widget>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="nl.x-services.plugins.iosminversion"
-        version="1.0">
-
-  <name>Polo</name>
-
-  <description>
-    Polo Loyalty mobile app for our loyal customers
-  </description>
-
-  <license>Polo Limited</license>
 
   <preference name="MIN_VERSION" />
 
@@ -87,3 +72,6 @@
   </platform>
 
 </plugin>
+
+    <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
+</widget>
