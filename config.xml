@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.lsl.polo"
-        version   = "1.0.4">
+        version   = "1.0.5">
     <name>Polo</name>
 
     <description>
@@ -32,6 +32,10 @@
     <icon src="res/icon/ios/icon-72.png"            gap:platform="ios"        width="72" height="72" />
     <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
     <icon src="res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
+    <icon src="res/icon/ios/icon-76.png"         gap:platform="ios"        width="76" height="76" />
+    <icon src="res/icon/ios/icon-120.png"         gap:platform="ios"        width="120" height="120" />
+    <icon src="res/icon/ios/icon-152.png"         gap:platform="ios"        width="152" height="152" />
+    <icon src="res/icon/ios/icon-60.png"         gap:platform="ios"        width="60" height="60" />
     <icon src="res/icon/ios/icon-180.png"         gap:platform="ios"        width="180" height="180" />
     <icon src="res/icon/webos/icon-64.png"          gap:platform="webos" />
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
@@ -46,8 +50,8 @@
     <gap:splash src="res/screen/ios/screen-iphone-portrait.png"    gap:platform="ios"     width="320" height="480" />
     <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios"     width="640" height="960" />
     <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
-    <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
-
+    <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="568" />
+<gap:splash src="res/screen/ios/splash-screen-320x568.png"     gap:platform="ios"     width="320" height="1334" />
     <gap:splash src="res/screen/ios/Splash-750x1334.png"     gap:platform="ios"     width="750" height="1334" />
     <gap:splash src="res/screen/ios/Splash-2208x1242.png"     gap:platform="ios"     width="1242" height="2208" />
     <gap:splash src="res/screen/ios/Splash-1242x2208.png"     gap:platform="ios"     width="2208" height="1242" />
