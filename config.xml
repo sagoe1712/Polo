@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.lsl.polo"
-        version   = "1.0.5">
+        version   = "1.0.6">
     <name>Polo</name>
 
     <description>
@@ -38,6 +38,7 @@
     <icon src="res/icon/ios/icon-152.png"         gap:platform="ios"        width="152" height="152" />
     <icon src="res/icon/ios/icon-60.png"         gap:platform="ios"        width="60" height="60" />
     <icon src="res/icon/ios/icon-180.png"         gap:platform="ios"        width="180" height="180" />
+      <icon src="res/icon/ios/icon-1024.png"         gap:platform="ios"        width="1024" height="1024" />
     <icon src="res/icon/webos/icon-64.png"          gap:platform="webos" />
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
