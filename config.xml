@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.lsl.polo"
-        version   = "1.0.6">
+        version   = "1.0.7">
     <name>Polo</name>
 
     <description>
@@ -61,9 +61,10 @@
 
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
     <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
-</widget>
 
-<plugin name="cordova-plugin-camera">
-   <param name="CAMERA_USAGE_DESCRIPTION" value="We are using the Camera for something..." />
-   <param name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="We are using the Photo Library for something..." />
-</plugin>
+    <plugin name="cordova-plugin-camera">
+       <param name="CAMERA_USAGE_DESCRIPTION" value="We are using the Camera for something..." />
+       <param name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="We are using the Photo Library for something..." />
+    </plugin>
+
+</widget>
