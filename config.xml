@@ -15,7 +15,7 @@
 
     <plugin name="phonegap-plugin-barcodescanner"/>
 
-    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="phonegap-version" value="cli-7.0.1" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
@@ -60,25 +60,10 @@
       <gap:splash src="res/screen/ios/Default-568h@2x.png"     gap:platform="ios"     width="640" height="1136" />
 
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
-
-	<plugin name="cordova-plugin-media-capture" source="npm" spec="*">
-  <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
-  <variable name="MICROPHONE_USAGE_DESCRIPTION" value="App would like to access the microphone." />
-  <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-
-  <preference name="MIN_VERSION" />
-
-  <engines>
-    <engine name="cordova" version=">=3.0.0"/>
-  </engines>
-
-  <platform name="ios">
-    <config-file target="*-Info.plist" parent="MinimumOSVersion">
-      <string>$MIN_VERSION</string>
-    </config-file>
-  </platform>
-
-</plugin>
-
     <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
 </widget>
+
+<plugin name="cordova-plugin-camera">
+   <param name="CAMERA_USAGE_DESCRIPTION" value="We are using the Camera for something..." />
+   <param name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="We are using the Photo Library for something..." />
+</plugin>
