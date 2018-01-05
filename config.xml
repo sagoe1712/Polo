@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.lsl.polo"
-        version   = "1.0.8">
+        version   = "1.0.9">
     <name>Polo</name>
 
     <description>
@@ -64,7 +64,7 @@
 
 
   <dict>
-  	<key>NSCameraUsageDescription</key>
+  	<key value="We are using the Camera for something">NSCameraUsageDescription</key>
   	<string>We are using the Camera for something...</string>
   	<key>NSPhotoLibraryUsageDescription</key>
   	<string>We are using the Photo Library for something...</string>
