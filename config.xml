@@ -62,9 +62,11 @@
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
     <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
 
-    <plugin name="cordova-plugin-camera">
-       <param name="CAMERA_USAGE_DESCRIPTION" value="We are using the Camera for something..." />
-       <param name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="We are using the Photo Library for something..." />
-    </plugin>
 
+  <dict>
+  	<key>NSCameraUsageDescription</key>
+  	<string>We are using the Camera for something...</string>
+  	<key>NSPhotoLibraryUsageDescription</key>
+  	<string>We are using the Photo Library for something...</string>
+</dict>
 </widget>
