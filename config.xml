@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.lsl.polo"
-        version   = "1.0.9">
+        version   = "1.0.10">
     <name>Polo</name>
 
     <description>
@@ -63,10 +63,11 @@
     <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
 
 
-  <dict>
-  	<key value="We are using the Camera for something">NSCameraUsageDescription</key>
-  	<string>We are using the Camera for something...</string>
-  	<key>NSPhotoLibraryUsageDescription</key>
-  	<string>We are using the Photo Library for something...</string>
-</dict>
+    <preference name="CAMERA_PERMISSION_REASON" />
+
+  <platform name="ios">
+    <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+      <string>$CAMERA_PERMISSION_REASON</string>
+    </config-file>
+  </platform>
 </widget>
