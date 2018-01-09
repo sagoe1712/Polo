@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.lsl.polo"
-        version   = "1.0.10">
+        version   = "1.0.11">
     <name>Polo</name>
 
     <description>
@@ -67,7 +67,7 @@
 
   <platform name="ios">
     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
-      <string>$CAMERA_PERMISSION_REASON</string>
+      <string>This app needs to use the camera to scan receipts</string>
     </config-file>
   </platform>
 </widget>
