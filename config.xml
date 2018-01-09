@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.lsl.polo"
-        version   = "1.0.12">
+        version   = "1.0.13">
     <name>Polo</name>
 
     <description>
@@ -13,14 +13,15 @@
         Loyalty Solutions Limited
     </author>
 
-    <plugin name="phonegap-plugin-barcodescanner"/>
+    <gap:plugin name="phonegap-plugin-barcodescanner" source="npm">
+    <variable name="CAMERA_USAGE_DESCRIPTION" value="Scanning Bar Codes" />
+  </gap:plugin>
 
     <preference name="phonegap-version" value="cli-6.5.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
     <preference name="webviewbounce"    value="false" />
-   <preference name="CAMERA_PERMISSION_REASON" value="true" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
