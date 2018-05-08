@@ -163,6 +163,42 @@ $$(document).on('pageInit', function(e){
 		
 })
 
+$$(document).on('pageInit', '.page[data-page="index"]', function (e) {
+//var polotoken = localStorage.polotoken;
+	var polotoken ="5cfb0ca560123953c3112370bd80463f";
+	alert("Index page opened");
+		$.ajax({
+			//alert("respond1");
+    			type:"POST",
+    			//url:"https://demo.perxclm.com/mobile/api/v1/?token="+polotoken+"&api=listprofile",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
+			data:{token:polotoken},
+    			dataType:"json",
+    			success: function(msg){
+						alert("respond");
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														alert(msg.data.memberid);
+														$('.person-name').text(msg.firstname+" "+msg.lastname);
+														$('.index-mem-no').html(msg.data.memberid);
+														$('.index-curr-bal').text(msg.currentbalance);
+														 $('.index-block-points').text(msg.blockedpoints);
+														$('.index-auction-bid').text();
+														$('.index-total-pur').text(msg.totalredeem);
+														$('.index-points-received').text(msg.totalredeem);
+														$('.index-points-expired').text(msg.totalredeem);
+
+													} else {
+														alert("noresponse");
+													}
+												
+				}
+		});
+	
+});
+	
+
 $$(document).on('pageInit', '.page[data-page="scanpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
   myApp.alert('This is Scan page');

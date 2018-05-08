@@ -24,12 +24,12 @@
       <div class="form_logo"><img src="images/polo-logo.png" alt="" title="" /></div>
             <div class="loginform">
             <form id="LoginForm" method="post">
-            <input type="text" name="Username" value="" class="form_input required txtusername" placeholder="username" />
-            <input type="password" name="Password" value="" class="form_input required pwdpass" placeholder="password" />
+            <input type="text" name="Username" value="" id="txtusername" class="form_input required txtusername" placeholder="username" />
+            <input type="password" name="Password" id="pwdpass" value="" class="form_input required pwdpass" placeholder="password" />
             <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div>
             <a href="main.html"><input type="submit" name="submit" class="form_submit btn-login" id="btn-login" value="SIGN IN" /></a>
             </form>
-           
+
             </div>
     </div>
     </div>
@@ -44,10 +44,10 @@
             <form method="post">
             <h4>Forgot Password?</h4>
             <p>Enter your email to help us identify you</p>
-            <input type="text" name="Email" value="" class="form_input required" placeholder="email" />
-            <input type="submit" name="submit" class="form_submit" id="submit" value="SEND" />
+            <input type="text" name="Email" value="" class="form_input required" id="txtForgotPass" placeholder="email" />
+            <input type="submit" name="submit" class="form_submit" id="btn-forgot" value="SEND" />
             </form>
-           
+
             </div>
       <div class="close_loginpopup_button"><a href="#" class="close-popup"><img src="images/icons/white/menu_close.png" alt="" title="" /></a></div>
     </div>
@@ -61,9 +61,102 @@
 <script>
 $(document).ready(function(e) {
     $('#btn-login').click(function(){
-		alert("Login works");
-		window.location.href = "main.html";
+      var username = $('#txtusername').val();
+      var password = $('#pwdpass').val();
+
+      if (username == "")
+    	{
+    		alert("Enter Your username");
+    		return false;
+    	}
+    	else if (password == "")
+    	{
+    		alert("Enter Your password");
+
+    	return false;
+    	}
+
+
+    	else{
+    		//alert("say GO");
+    		$.ajax({
+    			type:"POST",
+    			url:"https://demo.perxclm.com/polo/api/v1/?api=login",
+    			data:{username:username, password:password},
+    			dataType:"json",
+    			success: function(msg){
+
+    				if (msg.success == false) {
+    											alert("There was an error submitting the form. Please try again.");
+    											} else {
+    												if (msg.status ==1001){
+
+    												alert(msg.token);
+                              localStorage.setItem('polotoken', msg.token);
+
+    												window.location.replace('main.html');
+    												}
+                            else if (msg.status ==2003){
+    													alert("Invaid Username or Password");
+    												//	window.location.replace('changepassword.html', function() {
+    												//	$('#hmemberid').val(msg.memberid);
+    												//	});
+    												}
+    												else if (msg.status ==1002){
+    													alert("First Time Login");
+                              window.location.replace('first_time.html');
+    												//	window.location.replace('changepassword.html', function() {
+    												//	$('#hmemberid').val(msg.memberid);
+    												//	});
+    												}
+    												else {
+
+    												alert(msg.Status_message);
+
+
+    			$('#username').val('');
+    			$('#password').val('');
+    			}								}
+    	}
+    		});
+    		return false;
+    	}
+
+
 		});
+		$('#btn-forgot').click(function(){
+			var forgetemail = $('#txtForgotPass').val();
+			 if (forgetemail == "")
+    	{
+    		alert("Enter Your Email Address");
+    		return false;
+    	}
+		
+				$.ajax({
+    			type:"POST",
+    			url:"https://demo.perxclm.com/polo/api/v1/?api=resetpassword",
+    			data:{memberid:forgetemail},
+    			dataType:"json",
+    			success: function(msg){
+
+    				if (msg.success == false) {
+    											alert("There was an error submitting the form. Please try again.");
+    											} else {
+    												if (msg.status ==1001){
+
+    												alert("Password has been sent your email");
+    												}
+													else{
+														alert(msg);
+													}
+													
+																				}
+    	}
+    		});
+			return false;
+			
+			
+			});
 });
 </script>
 </html>
