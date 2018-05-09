@@ -164,33 +164,37 @@ $$(document).on('pageInit', function(e){
 })
 
 $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
-//var polotoken = localStorage.polotoken;
-	var polotoken ="5cfb0ca560123953c3112370bd80463f";
-	alert("Index page opened");
+var polotoken = localStorage.polotoken;
+	
 		$.ajax({
-			//alert("respond1");
     			type:"POST",
-    			//url:"https://demo.perxclm.com/mobile/api/v1/?token="+polotoken+"&api=listprofile",
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
 			data:{token:polotoken},
     			dataType:"json",
+			
+                    },
     			success: function(msg){
-						alert("respond");
     				
 													//alert(msg.status);
     												if (msg.status ==1001){
-														alert(msg.data.memberid);
-														$('.person-name').text(msg.firstname+" "+msg.lastname);
+													//	alert(msg.data.memberid);
+														var firstname1 = msg.data.firstname;
+														var lastname1 = msg.data.lastname;
+														$('.person-name').html(msg.data.firstname+" "+msg.data.lastname);
+														
+														$('.first-letter').html(firstname1.charAt(0).toUpperCase()+lastname1.charAt(0).toUpperCase());
 														$('.index-mem-no').html(msg.data.memberid);
-														$('.index-curr-bal').text(msg.currentbalance);
-														 $('.index-block-points').text(msg.blockedpoints);
-														$('.index-auction-bid').text();
-														$('.index-total-pur').text(msg.totalredeem);
-														$('.index-points-received').text(msg.totalredeem);
-														$('.index-points-expired').text(msg.totalredeem);
+														$('.index-curr-bal').html(msg.data.currentbalance);
+														 $('.index-block-points').html(msg.data.blockedpoints);
+														$('.index-auction-bid').html();
+														$('.index-total-pur').html(msg.data.totalredeem);
+														$('.index-points-received').html(msg.data.totalredeem);
+														$('.index-points-expired').html(msg.data.totalredeem);
 
-													} else {
-														alert("noresponse");
+													} else if (msg.status ==2003){
+														alert("You are currently not logged in or session has expired");
+														window.location.replace('index.html');
+														window.location="index.html";
 													}
 												
 				}
