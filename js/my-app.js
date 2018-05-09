@@ -165,7 +165,12 @@ $$(document).on('pageInit', function(e){
 
 $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
 var polotoken = localStorage.polotoken;
+<<<<<<< HEAD
 	
+=======
+	//var polotoken ="5cfb0ca560123953c3112370bd80463f";
+	alert("Index page opened");
+>>>>>>> origin/master
 		$.ajax({
     			type:"POST",
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
@@ -177,6 +182,7 @@ var polotoken = localStorage.polotoken;
     				
 													//alert(msg.status);
     												if (msg.status ==1001){
+<<<<<<< HEAD
 													//	alert(msg.data.memberid);
 														var firstname1 = msg.data.firstname;
 														var lastname1 = msg.data.lastname;
@@ -193,6 +199,19 @@ var polotoken = localStorage.polotoken;
 
 													} else if (msg.status ==2003){
 														alert("You are currently not logged in or session has expired");
+=======
+														alert(msg.data.memberid);
+														$('.person-name').html(msg.firstname+" "+msg.lastname);
+														$('.index-mem-no').html(msg.data.memberid);
+														$('.index-curr-bal').html(msg.currentbalance);
+														 $('.index-block-points').html(msg.blockedpoints);
+														$('.index-auction-bid').html();
+														$('.index-total-pur').html(msg.totalredeem);
+														$('.index-points-received').html(msg.totalredeem);
+														$('.index-points-expired').html(msg.totalredeem);
+
+													} else if (msg.status ==2003){
+>>>>>>> origin/master
 														window.location.replace('index.html');
 														window.location="index.html";
 													}
