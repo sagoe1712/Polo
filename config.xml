@@ -78,9 +78,7 @@
         <plugin name="cordova-plugin-network-information" source="npm" spec="1.0.1" />
         <plugin name="cordova-plugin-whitelist"      source="npm" spec="1.0.0" /> <!-- NEW -->
 
-        <!-- 3rd PARTY PLUGINS *3rd PARTY PLUGINS -->
-        <!-- popular alternative to the google chrome webview -->
-        <plugin name='org.crosswalk.engine' version='1.3.0' source='pgb' />
+     
 
         <!-- WHITELIST * WHITELIST * WHITELIST -->
         <!-- https://github.com/jessemonroy650/top-phonegap-mistakes/blob/master/the-whitelist-system.md -->
