@@ -13,7 +13,7 @@
         Loyalty Solutions Limited
     </author>
 
-    <plugin name="cordova-plugin-whitelist" spec="1">
+  
 		
 	<gap:plugin name="phonegap-plugin-barcodescanner" source="npm">
     <variable name="CAMERA_USAGE_DESCRIPTION" value="Scanning Bar Codes" />
@@ -65,7 +65,7 @@
 
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
     <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
-
+  <gap:plugin name="cordova-plugin-whitelist" spec="1">
 
    <access origin="*" />
     <allow-intent href="http://*/*" />
