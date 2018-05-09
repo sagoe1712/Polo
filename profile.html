@@ -1,5 +1,5 @@
 <div class="pages">
-  <div data-page="projects" class="page no-toolbar no-navbar">
+  <div data-page="profile" class="page no-toolbar no-navbar">
     <div class="page-content">
     
      <div class="navbarpages">
@@ -19,20 +19,21 @@
                </tr>
                <tr>
                <td>
-               <input type="text" class="constant-ele-looks" placeholder="First Name"/>
+               <input type="text" class="constant-ele-looks" id="txtfirstname" placeholder="First Name"/>
                </td>
                <td>
-               <input type="text" class="constant-ele-looks" placeholder="Last Name"/>
+               <input type="text" class="constant-ele-looks" id="txtlastname" placeholder="Last Name"/>
                </td>
                </tr>
                <tr>
                <td>
-               <select class="constant-ele-looks">
+               <select id="drpgender" class="constant-ele-looks">
                <option>Male</option>
+				     <option>Female</option>
                </select>
                </td>
                <td>
-               <input type="text" class="constant-ele-looks" placeholder="Date of Birth"/> 
+               <input type="text" class="constant-ele-looks" id="txtdob" placeholder="Date of Birth"/> 
                </td>
                </tr>
                <tr>        
@@ -40,36 +41,36 @@
                </tr>
                <tr>
                <td colspan="2">
-               <input type="text" class="constant-ele-looks" placeholder="Phone Number"/>
+               <input type="text" class="constant-ele-looks" id="txtphone" placeholder="Phone Number"/>
                </td>
                </tr>
                <tr>
                <td colspan="2">
-               <input type="text" class="constant-ele-looks" placeholder="Email Address"/>
+               <input type="text" class="constant-ele-looks" id="txtemail" placeholder="Email Address"/>
                </td>
                </tr>
                <tr>
                <td colspan="2">
-               <select class="constant-ele-looks">
+               <select class="constant-ele-looks" id="drpcountry">
                <option>Nigeria</option>
                </select>
                </td>
                </tr>
                <tr>
                <td>
-               <select class="constant-ele-looks">
+               <select class="constant-ele-looks" id="drpstate">
                <option>Lagos</option>
                </select>
                </td>
                <td>
-               <select class="constant-ele-looks">
+               <select class="constant-ele-looks" id="drpcity">
                <option>Yaba</option>
                </select>
                </td>
                </tr>
                <tr>
                <td colspan="2">
-               <input type="text" placeholder="Enter Street Address Here..." class="constant-ele-looks ele-width-100"/>
+               <input type="text" id="txtaddress" placeholder="Enter Street Address Here..." class="constant-ele-looks ele-width-100"/>
                </td>
                </tr>
                <tr>
@@ -77,15 +78,17 @@
                Receive Communication
                <!-- Rounded switch -->
 <label class="switch"> 
-  <input type="checkbox">
+  <input type="checkbox" id="cbxreceivecomm">
   <span class="slider round"></span>
 </label>
 </td>
 </tr>
 <tr>
 <td colspan="2">
-<select class="constant-ele-looks">
-               <option>Email</option>
+<select class="constant-ele-looks" id="drpcommeth">
+               <option value="1">Email</option>
+	  <option value="2">SMS</option>
+	  <option value="3">Both</option>
                </select>
                </td>
                </tr>

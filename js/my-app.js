@@ -203,6 +203,47 @@ var polotoken = localStorage.polotoken;
 });
 	
 
+$$(document).on('pageInit', '.page[data-page="profile"]', function (e) {
+var polotoken = localStorage.polotoken;
+	
+		$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
+			data:{token:polotoken},
+    			dataType:"json",
+			
+                    },
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+													//	alert(msg.data.memberid);
+														
+														$('#txtfirstname').text(msg.data.firstname);
+														$('#txtlastname').text(msg.data.lastname);
+														$('#drpgender').val();
+														$('#txtdob').text();
+														$('#txtphone').text(msg.data.phoneno);
+														$('#txtemail').text(msg.data.email);
+														$('#drpcountry').text(msg.data.countryid);
+														$('#drpstate').text(msg.data.stateid);
+														$('#drpcity').text(msg.data.cityid);
+														$('#txtaddress').text(msg.data.currentaddress);
+														$('#cbxreceivecomm').text(msg.data.commsflag);
+														$('#drpcommeth').text();
+														
+
+													} else if (msg.status ==2003){
+														alert("You are currently not logged in or session has expired");
+														window.location.replace('index.html');
+														window.location="index.html";
+													}
+												
+				}
+		});
+	
+});
+
 $$(document).on('pageInit', '.page[data-page="scanpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
   myApp.alert('This is Scan page');
