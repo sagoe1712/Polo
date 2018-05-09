@@ -33,6 +33,41 @@ var mainView = myApp.addView('.view-main', {
 $$(document).on('pageInit', function(e){
 	$(".swipebox").swipebox();
 	
+	var polotoken = localStorage.polotoken;
+	
+		$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
+			data:{token:polotoken},
+    			dataType:"json",
+			
+                    },
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+													//	alert(msg.data.memberid);
+														var firstname1 = msg.data.firstname;
+														var lastname1 = msg.data.lastname;
+														$('.person-name').html(msg.data.firstname+" "+msg.data.lastname);
+														
+														$('.first-letter').html(firstname1.charAt(0).toUpperCase()+lastname1.charAt(0).toUpperCase());
+														$('.index-mem-no').html(msg.data.memberid);
+														$('.index-curr-bal').html(msg.data.currentbalance);
+														 $('.index-block-points').html(msg.data.blockedpoints);
+														$('.index-auction-bid').html();
+														$('.index-total-pur').html(msg.data.totalredeem);
+														$('.index-points-received').html(msg.data.totalredeem);
+														$('.index-points-expired').html(msg.data.totalredeem);
+
+													} else if (msg.status ==2003){
+														alert("You are currently not logged in or session has expired");
+														window.location.replace('index.html');
+														window.location="index.html";
+													}
+												
+				}
+		});
 	
 	
 			$('a.backbutton').click(function(){
@@ -163,13 +198,18 @@ $$(document).on('pageInit', function(e){
 		
 })
 
-$$(document).on('pageInit', '.page[data-page="index"]', function (e) {
-var polotoken = localStorage.polotoken;
+
+
+$('#drpcountry').change( function(){
 	
-		$.ajax({
+	var countryid = $('#drpcountry').val();
+	var polotoken = localStorage.polotoken;
+	
+	
+			$.ajax({
     			type:"POST",
-			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
-			data:{token:polotoken},
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
+			data:{token:polotoken, countryid:countryid},
     			dataType:"json",
 			
                     },
@@ -177,35 +217,49 @@ var polotoken = localStorage.polotoken;
     				
 													//alert(msg.status);
     												if (msg.status ==1001){
-													//	alert(msg.data.memberid);
-														var firstname1 = msg.data.firstname;
-														var lastname1 = msg.data.lastname;
-														$('.person-name').html(msg.data.firstname+" "+msg.data.lastname);
-														
-														$('.first-letter').html(firstname1.charAt(0).toUpperCase()+lastname1.charAt(0).toUpperCase());
-														$('.index-mem-no').html(msg.data.memberid);
-														$('.index-curr-bal').html(msg.data.currentbalance);
-														 $('.index-block-points').html(msg.data.blockedpoints);
-														$('.index-auction-bid').html();
-														$('.index-total-pur').html(msg.data.totalredeem);
-														$('.index-points-received').html(msg.data.totalredeem);
-														$('.index-points-expired').html(msg.data.totalredeem);
-
-													} else if (msg.status ==2003){
-														alert("You are currently not logged in or session has expired");
-														window.location.replace('index.html');
-														window.location="index.html";
+														$("#drpstate").html("<option>Select A State</option>");
+															 $.each(msg, function(key,value)
+                            {
+														$("#drpstate").append("<option value='"+msg.data.stateid+"'>"+msg.data.name+"</option>");
+														}
+												
+													} else{
+													alert(msg);
 													}
 												
 				}
 		});
 	
 });
-	
 
 $$(document).on('pageInit', '.page[data-page="profile"]', function (e) {
 var polotoken = localStorage.polotoken;
+	var countryid = 1;
 	
+	
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
+			data:{token:polotoken, countryid:countryid},
+    			dataType:"json",
+			
+                    },
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														$("#drpstate").html("<option>Select A State</option>");
+															 $.each(msg, function(key,value)
+                            {
+														$("#drpstate").append("<option value='"+msg.data.stateid+"'>"+msg.data.name+"</option>");
+														}
+												
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
 		$.ajax({
     			type:"POST",
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
@@ -225,11 +279,36 @@ var polotoken = localStorage.polotoken;
 														$('#txtdob').text();
 														$('#txtphone').text(msg.data.phoneno);
 														$('#txtemail').text(msg.data.email);
-														$('#drpcountry').text(msg.data.countryid);
-														$('#drpstate').text(msg.data.stateid);
-														$('#drpcity').text(msg.data.cityid);
+														$('#drpcountry').val(msg.data.countryid);
+														$('#drpstate').val(msg.data.stateid);
+														
+														var stateid = msg.data.stateid;
+	
+	
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
+			data:{token:polotoken, stateid:stateid},
+    			dataType:"json",
+			
+                    },
+    			success: function(msg){
+    				
+														$("#drpstate").html("<option>Select A City</option>");
+															 $.each(msg, function(key,value)
+                            {
+														$("#drpstate").append("<option value='"+msg.data.cityid+"'>"+msg.data.name+"</option>");
+														}
+												
+													);
+												
+
+		});
+														
+														
+														$('#drpcity').val(msg.data.cityid);
 														$('#txtaddress').text(msg.data.currentaddress);
-														$('#cbxreceivecomm').text(msg.data.commsflag);
+														$('#cbxreceivecomm').val(msg.data.commsflag);
 														$('#drpcommeth').text();
 														
 
