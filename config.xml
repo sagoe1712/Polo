@@ -13,7 +13,9 @@
         Loyalty Solutions Limited
     </author>
 
-    <gap:plugin name="phonegap-plugin-barcodescanner" source="npm">
+    <plugin name="cordova-plugin-whitelist" source="npm">
+		
+	<gap:plugin name="phonegap-plugin-barcodescanner" source="npm">
     <variable name="CAMERA_USAGE_DESCRIPTION" value="Scanning Bar Codes" />
   </gap:plugin>
 
