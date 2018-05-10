@@ -33,6 +33,7 @@ var mainView = myApp.addView('.view-main', {
 $$(document).on('pageInit', function(e){
 	$(".swipebox").swipebox();
 	
+	
 	var polotoken = localStorage.polotoken;
 	
 		$.ajax({
@@ -40,8 +41,6 @@ $$(document).on('pageInit', function(e){
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
 			data:{token:polotoken},
     			dataType:"json",
-			
-                    },
     			success: function(msg){
     				
 													//alert(msg.status);
@@ -65,10 +64,12 @@ $$(document).on('pageInit', function(e){
 														window.location.replace('index.html');
 														window.location="index.html";
 													}
+					else{
+						alert(msg);
+					}
 												
 				}
 		});
-	
 	
 			$('a.backbutton').click(function(){
 			parent.history.back();
@@ -198,8 +199,6 @@ $$(document).on('pageInit', function(e){
 		
 })
 
-
-
 $('#drpcountry').change( function(){
 	
 	var countryid = $('#drpcountry').val();
@@ -211,8 +210,6 @@ $('#drpcountry').change( function(){
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
 			data:{token:polotoken, countryid:countryid},
     			dataType:"json",
-			
-                    },
     			success: function(msg){
     				
 													//alert(msg.status);
@@ -221,10 +218,79 @@ $('#drpcountry').change( function(){
 															 $.each(msg, function(key,value)
                             {
 														$("#drpstate").append("<option value='"+msg.data.stateid+"'>"+msg.data.name+"</option>");
-														}
+														});
 												
 													} else{
 													alert(msg);
+													}
+												
+				}
+		});
+	
+});
+
+
+$('#drpstate').change( function(){
+	
+	var stateid = $('#drpstate').val();
+	var polotoken = localStorage.polotoken;
+	
+	
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
+			data:{token:polotoken, stateid:stateid},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														$("#drpstate").html("<option>Select A City</option>");
+															 $.each(msg, function(key,value)
+                            {
+														$("#drpstate").append("<option value='"+msg.data.cityid+"'>"+msg.data.name+"</option>");
+														});
+												
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
+	
+});
+
+
+$$(document).on('pageInit', '.page[data-page="index"]', function (e) {
+var polotoken = localStorage.polotoken;
+	//var polotoken ="5cfb0ca560123953c3112370bd80463f";
+	alert("Index page opened");
+		$.ajax({
+			//alert("respond1");
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
+			data:{token:polotoken},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														var firstname1 = msg.data.firstname;
+														var lastname1 = msg.data.lastname;
+														$('.person-name').html(msg.data.firstname+" "+msg.data.lastname);
+														
+														$('.first-letter').html(firstname1.charAt(0).toUpperCase()+lastname1.charAt(0).toUpperCase());
+														$('.index-mem-no').html(msg.data.memberid);
+														$('.index-curr-bal').html(msg.data.currentbalance);
+														 $('.index-block-points').html(msg.data.blockedpoints);
+														$('.index-auction-bid').html();
+														$('.index-total-pur').html(msg.data.totalredeem);
+														$('.index-points-received').html(msg.data.totalredeem);
+														$('.index-points-expired').html(msg.data.totalredeem);
+
+													} else if (msg.status ==2003){
+														window.location.replace('index.html');
+														window.location="index.html";
 													}
 												
 				}
@@ -242,8 +308,6 @@ var polotoken = localStorage.polotoken;
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
 			data:{token:polotoken, countryid:countryid},
     			dataType:"json",
-			
-                    },
     			success: function(msg){
     				
 													//alert(msg.status);
@@ -252,7 +316,7 @@ var polotoken = localStorage.polotoken;
 															 $.each(msg, function(key,value)
                             {
 														$("#drpstate").append("<option value='"+msg.data.stateid+"'>"+msg.data.name+"</option>");
-														}
+														});
 												
 													} else{
 													alert(msg);
@@ -265,24 +329,23 @@ var polotoken = localStorage.polotoken;
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
 			data:{token:polotoken},
     			dataType:"json",
-			
-                    },
     			success: function(msg){
     				
 													//alert(msg.status);
     												if (msg.status ==1001){
 													//	alert(msg.data.memberid);
 														
-														$('#txtfirstname').text(msg.data.firstname);
-														$('#txtlastname').text(msg.data.lastname);
+														$('#txtfirstname').val(msg.data.firstname);
+														$('#txtlastname').val(msg.data.lastname);
 														$('#drpgender').val();
-														$('#txtdob').text();
-														$('#txtphone').text(msg.data.phoneno);
-														$('#txtemail').text(msg.data.email);
+														$('#txtdob').val();
+														$('#txtphone').val(msg.data.phoneno);
+														$('#txtemail').val(msg.data.email);
 														$('#drpcountry').val(msg.data.countryid);
 														$('#drpstate').val(msg.data.stateid);
-														
+														$('#txtaddress').val(msg.data.currentaddress);
 														var stateid = msg.data.stateid;
+														
 	
 	
 			$.ajax({
@@ -290,26 +353,19 @@ var polotoken = localStorage.polotoken;
 			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
 			data:{token:polotoken, stateid:stateid},
     			dataType:"json",
-			
-                    },
     			success: function(msg){
     				
 														$("#drpstate").html("<option>Select A City</option>");
 															 $.each(msg, function(key,value)
                             {
 														$("#drpstate").append("<option value='"+msg.data.cityid+"'>"+msg.data.name+"</option>");
-														}
-												
-													);
-												
-
-		});
+														});
+				}
+			});
+													$('#drpcity').val(msg.data.cityid);
 														
-														
-														$('#drpcity').val(msg.data.cityid);
-														$('#txtaddress').text(msg.data.currentaddress);
 														$('#cbxreceivecomm').val(msg.data.commsflag);
-														$('#drpcommeth').text();
+														$('#drpcommeth').val();
 														
 
 													} else if (msg.status ==2003){
@@ -320,8 +376,8 @@ var polotoken = localStorage.polotoken;
 												
 				}
 		});
-	
 });
+
 
 $$(document).on('pageInit', '.page[data-page="scanpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
@@ -367,6 +423,5 @@ $$(document).on('pageInit', '.page[data-page="auctiondescpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
   myApp.alert('This is the auction description page');
 })
-
 
 
