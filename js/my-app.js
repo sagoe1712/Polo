@@ -366,7 +366,7 @@ $('#drpstate').change(function(){
     				
 													//alert(msg.status);
     												if (msg.status ==1001){
-														$("#drpstate").html("<option>Select A State</option>");
+														$("#drpcity").html("<option>Select A State</option>");
 															 $.each(msg.data, function(key,value)
                             {
 														$("#drpcity").append("<option value='"+value.stateid+"'>"+value.name+"</option>");
