@@ -207,7 +207,7 @@ $('#drpcountry').change( function(){
 	
 			$.ajax({
     			type:"POST",
-			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getstate",
 			data:{token:polotoken, countryid:countryid},
     			dataType:"json",
     			success: function(msg){
@@ -215,9 +215,9 @@ $('#drpcountry').change( function(){
 													//alert(msg.status);
     												if (msg.status ==1001){
 														$("#drpstate").html("<option>Select A State</option>");
-															 $.each(msg, function(key,value)
+															 $.each(msg.data, function(key,value)
                             {
-														$("#drpstate").append("<option value='"+msg.data.stateid+"'>"+msg.data.name+"</option>");
+														$("#drpstate").append("<option value='"+stateid+"'>"+name+"</option>");
 														});
 												
 													} else{
@@ -229,36 +229,6 @@ $('#drpcountry').change( function(){
 	
 });
 
-
-$('#drpstate').change( function(){
-	
-	var stateid = $('#drpstate').val();
-	var polotoken = localStorage.polotoken;
-	
-	
-			$.ajax({
-    			type:"POST",
-			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
-			data:{token:polotoken, stateid:stateid},
-    			dataType:"json",
-    			success: function(msg){
-    				
-													//alert(msg.status);
-    												if (msg.status ==1001){
-														$("#drpstate").html("<option>Select A City</option>");
-															 $.each(msg, function(key,value)
-                            {
-														$("#drpstate").append("<option value='"+msg.data.cityid+"'>"+msg.data.name+"</option>");
-														});
-												
-													} else{
-													alert(msg);
-													}
-												
-				}
-		});
-	
-});
 
 
 $$(document).on('pageInit', '.page[data-page="index"]', function (e) {
@@ -305,7 +275,7 @@ var polotoken = localStorage.polotoken;
 	
 			$.ajax({
     			type:"POST",
-			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getstate",
 			data:{token:polotoken, countryid:countryid},
     			dataType:"json",
     			success: function(msg){
@@ -313,9 +283,11 @@ var polotoken = localStorage.polotoken;
 													//alert(msg.status);
     												if (msg.status ==1001){
 														$("#drpstate").html("<option>Select A State</option>");
-															 $.each(msg, function(key,value)
+															 $.each(msg.data, function(key,value)
                             {
-														$("#drpstate").append("<option value='"+msg.data.stateid+"'>"+msg.data.name+"</option>");
+																
+															
+														$("#drpstate").append("<option value='"+value.stateid+"'>"+value.name+"</option>");
 														});
 												
 													} else{
@@ -343,8 +315,12 @@ var polotoken = localStorage.polotoken;
 														$('#txtemail').val(msg.data.email);
 														$('#drpcountry').val(msg.data.countryid);
 														$('#drpstate').val(msg.data.stateid);
+															$('#drpstate').select(msg.data.stateid);
 														$('#txtaddress').val(msg.data.currentaddress);
 														var stateid = msg.data.stateid;
+														var city = msg.data.cityid;
+															$('#cbxreceivecomm').val(msg.data.commsflag);
+														$('#drpcommeth').val();
 														
 	
 	
@@ -355,19 +331,16 @@ var polotoken = localStorage.polotoken;
     			dataType:"json",
     			success: function(msg){
     				
-														$("#drpstate").html("<option>Select A City</option>");
-															 $.each(msg, function(key,value)
+														$("#drpcity").html("<option>Select A City</option>");
+															 $.each(msg.data, function(key,value)
                             {
-														$("#drpstate").append("<option value='"+msg.data.cityid+"'>"+msg.data.name+"</option>");
+														$("#drpcity").append("<option value='"+value.cityid+"'>"+value.name+"</option>");
+																 	$('#drpcity').val(city);
+														$('#drpcity').select(city);
 														});
 				}
 			});
-													$('#drpcity').val(msg.data.cityid);
-														
-														$('#cbxreceivecomm').val(msg.data.commsflag);
-														$('#drpcommeth').val();
-														
-
+																		
 													} else if (msg.status ==2003){
 														alert("You are currently not logged in or session has expired");
 														window.location.replace('index.html');
@@ -376,6 +349,38 @@ var polotoken = localStorage.polotoken;
 												
 				}
 		});
+	
+	
+$('#drpstate').change(function(){
+	alert("change");
+	var stateid = $('#drpstate').val();
+	var polotoken = localStorage.polotoken;
+	
+	
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getcity",
+			data:{token:polotoken, stateid:stateid},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														$("#drpstate").html("<option>Select A State</option>");
+															 $.each(msg.data, function(key,value)
+                            {
+														$("#drpcity").append("<option value='"+value.stateid+"'>"+value.name+"</option>");
+														});
+												
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
+	
+});
+
 });
 
 
