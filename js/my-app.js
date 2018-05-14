@@ -352,7 +352,7 @@ var polotoken = localStorage.polotoken;
 	
 	
 $('#drpstate').change(function(){
-	alert("change");
+	//alert("change");
 	var stateid = $('#drpstate').val();
 	var polotoken = localStorage.polotoken;
 	
