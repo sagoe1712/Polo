@@ -398,9 +398,9 @@ $$(document).on('pageInit', '.page[data-page="transferpage"]', function (e) {
     												if (msg.status ==1001){
 													//	alert(msg.data.memberid);
 														
-														$('#payer-name').val(msg.data.firstname +" "+msg.data.lastname);
-														$('#payer-mem-no').val(msg.data.memberid);
-														$('payer-bal').val(msg.data.currentbalance)
+														$('#payer-name').html(msg.data.firstname +" "+msg.data.lastname);
+														$('#payer-mem-no').html(msg.data.memberid);
+														$('payer-bal').html(msg.data.currentbalance)
 													} else if (msg.status ==2003){
 														alert("You are currently not logged in or session has expired");
 														window.location.replace('index.html');
