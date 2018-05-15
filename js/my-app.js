@@ -383,6 +383,69 @@ $('#drpstate').change(function(){
 
 });
 
+$$(document).on('pageInit', '.page[data-page="transferpage"]', function (e) {
+  // Following code will be executed for page with data-page attribute equal to "about"
+	var polotoken = localStorage.polotoken;
+	$('#btn-transfer').hide();
+		$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listprofile",
+			data:{token:polotoken},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+													//	alert(msg.data.memberid);
+														
+														$('#payer-name').val(msg.data.firstname +" "+msg.data.lastname);
+														$('#payer-mem-no').val(msg.data.memberid);
+														$('payer-bal').val(msg.data.currentbalance)
+													} else if (msg.status ==2003){
+														alert("You are currently not logged in or session has expired");
+														window.location.replace('index.html');
+														window.location="index.html";
+													}
+												
+				}
+		});
+	
+	$('#payee-mem-no').blur(function(){
+		var payee = $('#payee-mem-no').val();
+		
+		if (payee.length != 10){
+			alert("Membership number is 10 digit");
+			}
+		
+	});
+	
+	
+	$('#payee-mem-no').keyup(function(){
+		var payee = $('#payee-mem-no').val();
+		
+		if (payee.length == 10){
+				$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getmember",
+			data:{token:polotoken, transfer_to:payee},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+													$('#btn-transfer').show();
+														$('#receiptant-name').html(msg.data.firstname+" "+msg.data.lastname);
+														$('#receiptant-no').html(msg.data.memberid);
+													}else{
+													alert(msg.message);
+													}
+												
+				}
+		});
+		}
+	});
+	
+});
 
 $$(document).on('pageInit', '.page[data-page="scanpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
@@ -416,17 +479,17 @@ $$(document).on('pageInit', '.page[data-page="scanpage"]', function (e) {
 					
 				
 });
-})
+});
 
 $$(document).on('pageInit', '.page[data-page="statementpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
   myApp.alert('This is the statement page');
-})
+});
 
 
 $$(document).on('pageInit', '.page[data-page="auctiondescpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
   myApp.alert('This is the auction description page');
-})
+});
 
 
