@@ -483,7 +483,37 @@ $$(document).on('pageInit', '.page[data-page="scanpage"]', function (e) {
 
 $$(document).on('pageInit', '.page[data-page="statementpage"]', function (e) {
   // Following code will be executed for page with data-page attribute equal to "about"
-  myApp.alert('This is the statement page');
+  //myApp.alert('This is the statement page');
+	
+	var polotoken = localStorage.polotoken;
+	
+	
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=statement",
+			data:{token:polotoken},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														$("#statement-table").html("<tr><td>Date</td><td>Transaction Type</td><td>Description</td><td>Amount</td></tr>");
+															 $.each(msg.data, function(key,value)
+                            {
+																 var amounta = value.gained_points;
+																  var amountb = value.used_points;
+																 var amount = parseFloat(amounta) + parseFloat(amountb);
+																
+														$("#statement-table").append("<tr><td>"+value.tran_date+"</td><td>"+value.tran_type+"</td><td>"+value.description+"</td><td>"+amount+"</td></td>");
+																
+														});
+												
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
 });
 
 
