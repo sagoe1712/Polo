@@ -522,4 +522,123 @@ $$(document).on('pageInit', '.page[data-page="auctiondescpage"]', function (e) {
   myApp.alert('This is the auction description page');
 });
 
+$$(document).on('pageInit', '.page[data-page="notificationpage"]', function (e) {
+  // Following code will be executed for page with data-page attribute equal to "about"
+	var polotoken = localStorage.polotoken;
+
+	
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listnotification",
+			data:{token:polotoken},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+															 $.each(msg.data, function(key,value)
+                            {
+																 var date = value.create_date;
+																 var dateObj = new Date(date.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3"));
+																 var month = dateObj.getMonth(); //months from 1-12
+var day = dateObj.getUTCDate();
+var year = dateObj.getUTCFullYear();
+																
+																 $('.posts').append('<li><div class="post_entry"><div class="post_date"><span class="day">'+day+'</span> <span class="month">'+month+'</span><span class="year">'+year+'</span></div><div class="post_title"><h2><a class="notifyopen" href="#" data-notify="'+value.notify_id+'" data-subject="'+value.tran_type+'" >'+value.tran_type+'.</a></h2></div><div class="view_more"><a href="#"><img src="images/icons/notify/delete.png" class="icon16"/></a></div></div></li>');
+																
+														});
+												
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
+	
+	$('.notifyopen').click(function(){
+		var notify_id = $(this).attr('data-notify');
+		 window.localStorage.setItem('notify_id',notify_id);
+			var subject = $(this).attr('data-subject');
+		 window.localStorage.setItem('notify_subject',subject);
+	window.location.replace('main.html#!/notification-open.html');
+	window.location="main.html#!/notification-open.html";
+		
+	});
+ 
+});
+
+$$(document).on('pageInit', '.page[data-page="notification-open"]', function (e) {
+	
+	var polotoken = localStorage.polotoken;
+	var notify_id = localStorage.notify_id;
+		var subject = localStorage.notify_subject;
+		$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=getnotification",
+			data:{token:polotoken, notify_id:notify_id},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														$("#notify_subject").html(subject);
+														$(".div-not-body").html(value.content);
+														
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
+	window.localStorage.removeItem("notify_id");
+		window.localStorage.removeItem("notify_subject");
+});
+
+$$(document).on('pageInit', '.page[data-page="auctionpage"]', function (e) {
+  // Following code will be executed for page with data-page attribute equal to "about"
+ // myApp.alert('This is the auction description page');
+	
+	
+	var polotoken = localStorage.polotoken;
+		
+
+	
+		$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listauction",
+			data:{token:polotoken},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+														
+														 $.each(msg.data, function(key,value)
+                            {
+																
+															 $(".page-auction").append('<div class="auction-itm"><div class="div-auction-img"><h3 class="auction-time">'+value.end_date+" "+value.end_time+'</h3><img src="'+value.image+'" class="max-img"/></div><div class="div-auction-itm-info"><br/><p class="auction-itm-name">'+value.item_name+'</p><div class="desc-box"><p>'+value.description+'</p><h3 class="auction-cost">Current Bid: <strong>'+value.current_bid+'</strong></h3><h3 class="auction-cost">Minimum Points to Bid: <strong>'+value.current_bid+'</strong></h3></div><table><tr><td width="50%"><input type="text" placeholder="Bid Amount" class="constant-ele-looks text-left"/></td><td width="50%"><button data-auctionid="'+value.auctionid+'" class="btn-add-to-cart"><img src="images/icons/auction/auction.png" class="btn-icon"/>BID</button></td></tr></table></div></div>');
+																
+														});
+														
+											
+														
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
+		
+//$('.page-auction.auction-itm').on('.auction-desc','click',function(){
+	$('.auction-desc').click(function(){
+		alert("alert auction description link clicked");
+		var auctionid = $(this).attr('data-auctionid');
+		 window.localStorage.setItem('auctionid',auctionid);
+			window.location.replace('main.html#!/auction-description.html');
+	window.location="main.html#!/auction-description.html";
+		
+	});
+	
+});
+
 
