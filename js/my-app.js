@@ -544,7 +544,7 @@ $$(document).on('pageInit', '.page[data-page="notificationpage"]', function (e) 
 var day = dateObj.getUTCDate();
 var year = dateObj.getUTCFullYear();
 																
-																 $('.posts').append('<li><div class="post_entry"><div class="post_date"><span class="day">'+day+'</span> <span class="month">'+month+'</span><span class="year">'+year+'</span></div><div class="post_title"><h2><a class="notifyopen" href="#" data-notify="'+value.notify_id+'" data-subject="'+value.tran_type+'" >'+value.tran_type+'.</a></h2></div><div class="view_more"><a href="#"><img src="images/icons/notify/delete.png" class="icon16"/></a></div></div></li>');
+													 $('.posts').append('<li><div class="post_entry"><div class="post_date"><span class="day">'+day+'</span> <span class="month">'+month+'</span><span class="year">'+year+'</span></div><div class="post_title"><h2><a class="notifyopen" href="notification-open.html" data-notify="'+value.notify_id+'" data-subject="'+value.tran_type+'" >'+value.tran_type+'.</a></h2></div><div class="view_more"><a href="#"><img src="images/icons/notify/delete.png" class="icon16"/></a></div></div></li>');
 																
 														});
 												
@@ -561,7 +561,8 @@ var year = dateObj.getUTCFullYear();
 		 window.localStorage.setItem('notify_id',notify_id);
 			var subject = $(this).attr('data-subject');
 		 window.localStorage.setItem('notify_subject',subject);
-	window.location.replace('main.html#!/notification-open.html');
+		//var notify_id = localStorage.notify_id;
+window.location.replace('main.html#!/notification-open.html');
 	window.location="main.html#!/notification-open.html";
 		
 	});
@@ -583,7 +584,7 @@ $$(document).on('pageInit', '.page[data-page="notification-open"]', function (e)
 													//alert(msg.status);
     												if (msg.status ==1001){
 														$("#notify_subject").html(subject);
-														$(".div-not-body").html(value.content);
+														$(".div-not-body").html(msg.data.content);
 														
 													} else{
 													alert(msg);
