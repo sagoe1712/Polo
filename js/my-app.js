@@ -555,7 +555,8 @@ var year = dateObj.getUTCFullYear();
 				}
 		});
 	
-	$('.notifyopen').click(function(){
+//	$('.notifyopen').click(function(){
+		$('.posts').on('click','.notifyopen',function(){
 		var notify_id = $(this).attr('data-notify');
 		 window.localStorage.setItem('notify_id',notify_id);
 			var subject = $(this).attr('data-subject');
