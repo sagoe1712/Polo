@@ -690,7 +690,7 @@ $$(document).on('pageInit', '.page[data-page="surveypage"]', function (e){
     												if (msg.status ==1001){
 															 $.each(msg.data, function(key,value)
                             {
-																  $('.posts').append('<li><div class="post_entry"><div class="post_date"><span class="day">'+value.no_questions+'</span></div><div class="post_title"><h2><a class="surveyopen" href="notification-open.html" data-surveyid="'+value.id+'" >'+value.survey_name+'.</a></h2></div><div class="view_more"></div></div></li>');
+																  $('.posts').append('<li><div class="post_entry"><div class="post_date"><span class="day">'+value.no_questions+'</span> questions</div><div class="post_title"><h2><a class="surveyopen" href="survey-open.html" data-surveyid="'+value.id+'" >'+value.survey_name+'.</a></h2></div><div class="view_more"></div></div></li>');
 																 $('.div-survey-question').append('<p>value.question</p>');
 																
 														});
@@ -705,7 +705,7 @@ $$(document).on('pageInit', '.page[data-page="surveypage"]', function (e){
 	$('.posts').on('click','.surveyopen',function(){
 		var survey_id = $(this).attr('data-surveyid');
 		 window.localStorage.setItem('survey_id',survey_id);
-		 window.localStorage.setItem('notify_subject',subject);
+		// window.localStorage.setItem('notify_subject',subject);
 		//var notify_id = localStorage.notify_id;
 window.location.replace('main.html#!/survey-open.html');
 	window.location="main.html#!/survey-open.html";
