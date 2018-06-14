@@ -381,6 +381,36 @@ $('#drpstate').change(function(){
 	
 });
 
+		$('#btn-update-pro').click(function(){
+	alert("Profile update button has been hit");
+		var polotoken = localStorage.polotoken;
+	var countryid = 1;
+		var firstname = $('#txtfirstname').val();
+		var lastname = $('#txtlastname').val();
+		//var gender = $('#drpgender').val();
+		//var dob = $('#txtdob').val();
+		var stateid = $('#drpstate').val();
+		var cityid =$('#drpcity').val();
+		var currentaddress = $('#txtaddress').val();
+		var phoneno = $('#txtphone').val();
+		var email = $('#txtemail').val();
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=updateprofile",
+			data:{token:polotoken, firstname:firstname, lastname:lastname, phoneno:phoneno, email:email, currentaddress: currentaddress, cityid:cityid, stateid:stateid, countryid:countryid},
+    			dataType:"json",
+    			success: function(msg){
+    					if (msg.status ==1001){
+							alert("Profile updated has been successful");
+						}
+					else{
+						alert(msg.status +" "+msg.message);
+					}
+												
+				}
+		});
+});
+	
 });
 
 $$(document).on('pageInit', '.page[data-page="transferpage"]', function (e) {
@@ -644,3 +674,83 @@ $$(document).on('pageInit', '.page[data-page="auctionpage"]', function (e) {
 });
 
 
+
+
+$$(document).on('pageInit', '.page[data-page="surveypage"]', function (e){
+  // Following code will be executed for page with data-page attribute equal to "about"
+	var polotoken = localStorage.polotoken;
+			$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=listsurvey",
+			data:{token:polotoken},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+															 $.each(msg.data, function(key,value)
+                            {
+																  $('.posts').append('<li><div class="post_entry"><div class="post_date"><span class="day">'+value.no_questions+'</span></div><div class="post_title"><h2><a class="surveyopen" href="notification-open.html" data-surveyid="'+value.id+'" >'+value.survey_name+'.</a></h2></div><div class="view_more"></div></div></li>');
+																 $('.div-survey-question').append('<p>value.question</p>');
+																
+														});
+												
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
+	
+	$('.posts').on('click','.surveyopen',function(){
+		var survey_id = $(this).attr('data-surveyid');
+		 window.localStorage.setItem('survey_id',survey_id);
+		 window.localStorage.setItem('notify_subject',subject);
+		//var notify_id = localStorage.notify_id;
+window.location.replace('main.html#!/survey-open.html');
+	window.location="main.html#!/survey-open.html";
+		
+	});
+ 
+});
+
+$$(document).on('pageInit', '.page[data-page="surveyopen"]', function (e){
+	var polotoken = localStorage.polotoken;
+	var survey_id = localStorage.survey_id;
+	$.ajax({
+    			type:"POST",
+			url:"https://demo.perxclm.com/mobile/api/v1/?api=surveyquestions",
+			data:{token:polotoken, survey_id:survey_id},
+    			dataType:"json",
+    			success: function(msg){
+    				
+													//alert(msg.status);
+    												if (msg.status ==1001){
+															 $.each(msg.data, function(key,value)
+                            {
+																 $('.div-survey-question').append('<p>'+value.question+'</p>');
+																
+																 
+																 if(value.choice_type == 1){
+																	  $('.div-survey-question').append('<select class="constant-ele-looks">');
+																	 $('.div-survey-question').append('<option>Select Answer</option>');
+																  $.each(msg.data.options, function(key,value)
+                            {
+																 $('.div-survey-question').append('<option value="'+value.choice_id+'">'+value.choice_name+'</option>');
+																  });
+																	  $('.div-survey-question').append('</select>');
+																		 }else{
+																			 $('.div-survey-question').append('<input type="text"/>');
+																		 }
+																$('.div-survey-question').append('<br/>');
+														});
+												
+													} else{
+													alert(msg);
+													}
+												
+				}
+		});
+	
+	
+});
