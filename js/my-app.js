@@ -732,15 +732,14 @@ $$(document).on('pageInit', '.page[data-page="surveyopen"]', function (e){
 																
 																 
 																 if(value.choice_type == 1){
-																	  $('.div-survey-question').append('<select class="constant-ele-looks">');
-																	 $('.div-survey-question').append('<option>Select Answer</option>');
-																  $.each(msg.data.options, function(key,value)
+																	  $('.div-survey-question').append('<select class="constant-ele-looks selectdrp" data-question="'+value.question_id+'"><option>Select Answer</option></select>');
+																  $.each(value.options, function(key1,value1)
                             {
-																 $('.div-survey-question').append('<option value="'+value.choice_id+'">'+value.choice_name+'</option>');
+																 $('.selectdrp').append('<option value="'+value1.choice_id+'">'+value1.choice_name+'</option>');
 																  });
-																	  $('.div-survey-question').append('</select>');
+																	  
 																		 }else{
-																			 $('.div-survey-question').append('<input type="text"/>');
+																			 $('.div-survey-question').append('<input type="text" class="constant-ele-looks  surveyquestion" data-question="'+value.question_id+'"/>');
 																		 }
 																$('.div-survey-question').append('<br/>');
 														});
